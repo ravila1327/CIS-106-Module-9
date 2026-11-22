@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="M9P5"/>
+        <attribute name="authors" value="rafae"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-11-21 10:20:41 PM"/>
+        <attribute name="created" value="cmFmYWU7UkFGQTsyMDI2LTExLTIxOzA3OjQ2OjMxIFBNOzIwNzM="/>
+        <attribute name="edited" value="cmFmYWU7UkFGQTsyMDI2LTExLTIxOzEwOjIwOjQxIFBNOzE7MjE2OA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="lastName" type="String" array="False" size=""/>
+            <declare name="creditHours" type="Integer" array="False" size=""/>
+            <declare name="districtCode" type="String" array="False" size=""/>
+            <declare name="tuition" type="Real" array="False" size=""/>
+            <declare name="totalTuition" type="Real" array="False" size=""/>
+            <assign variable="totalTuition" expression="0"/>
+            <output expression="&quot;Enter student last name, or X to stop:&quot;" newline="True"/>
+            <input variable="lastName"/>
+            <while expression="lastName != &quot;X&quot;">
+                <output expression="&quot;Enter credit hours:&quot;" newline="True"/>
+                <input variable="creditHours"/>
+                <output expression="&quot;Enter district code (I or O):&quot;" newline="True"/>
+                <input variable="districtCode"/>
+                <assign variable="tuition" expression="calcTuition(creditHours, districtCode)"/>
+                <output expression="lastName &amp; &quot; $&quot; &amp; tuition" newline="True"/>
+                <assign variable="totalTuition" expression="totalTuition + tuition"/>
+                <output expression="&quot;Enter student last name, or X to stop:&quot;" newline="True"/>
+                <input variable="lastName"/>
+            </while>
+            <output expression="&quot;Total tuition owed: $&quot; &amp; totalTuition" newline="True"/>
+        </body>
+    </function>
+    <function name="calcTuition" type="Real" variable="tuition">
+        <parameters>
+            <parameter name="creditHours" type="Integer" array="False"/>
+            <parameter name="districtCode" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="tuition" type="Real" array="False" size=""/>
+            <if expression="districtCode == &quot;I&quot;">
+                <then>
+                    <assign variable="tuition" expression="creditHours * 250"/>
+                </then>
+                <else>
+                    <assign variable="tuition" expression="creditHours * 550"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

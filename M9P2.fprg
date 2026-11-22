@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="M9P2"/>
+        <attribute name="authors" value="rafae"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-11-20 10:46:43 PM"/>
+        <attribute name="created" value="cmFmYWU7UkFGQTsyMDI2LTExLTIwOzA4OjE0OjA4IFBNOzIwNzI="/>
+        <attribute name="edited" value="cmFmYWU7UkFGQTsyMDI2LTExLTIwOzEwOjQ2OjQzIFBNOzE7MjE3Nw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="lastName" type="String" array="False" size=""/>
+            <declare name="hits" type="Integer" array="False" size=""/>
+            <declare name="atBats" type="Integer" array="False" size=""/>
+            <declare name="battingAverage" type="Real" array="False" size=""/>
+            <declare name="playerCount" type="Integer" array="False" size=""/>
+            <assign variable="playerCount" expression="0"/>
+            <output expression="&quot;Enter player last name, or X to stop:&quot;" newline="True"/>
+            <input variable="lastName"/>
+            <while expression="lastName != &quot;X&quot;">
+                <output expression="&quot;Enter number of hits:&quot;" newline="True"/>
+                <input variable="hits"/>
+                <output expression="&quot;Enter number of at bats:&quot;" newline="True"/>
+                <input variable="atBats"/>
+                <assign variable="battingAverage" expression="calcAverage(hits, atBats)"/>
+                <output expression="lastName &amp; &quot; &quot; &amp; battingAverage" newline="True"/>
+                <assign variable="playerCount" expression="playerCount + 1"/>
+                <output expression="&quot;Enter player last name, or X to stop:&quot;" newline="True"/>
+                <input variable="lastName"/>
+            </while>
+            <output expression="&quot;Number of players: &quot; &amp; playerCount" newline="True"/>
+        </body>
+    </function>
+    <function name="calcAverage" type="Real" variable="battingAverage">
+        <parameters>
+            <parameter name="hits" type="Integer" array="False"/>
+            <parameter name="atBats" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="battingAverage" type="Real" array="False" size=""/>
+            <assign variable="battingAverage" expression="hits / atBats"/>
+        </body>
+    </function>
+</flowgorithm>

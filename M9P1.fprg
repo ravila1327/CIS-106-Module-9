@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="M9P1"/>
+        <attribute name="authors" value="rafae"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-11-20 08:11:00 PM"/>
+        <attribute name="created" value="cmFmYWU7UkFGQTsyMDI2LTExLTE4OzA2OjI5OjQ1IFBNOzIwODQ="/>
+        <attribute name="edited" value="cmFmYWU7UkFGQTsyMDI2LTExLTIwOzA4OjExOjAwIFBNOzM7MjE3MQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="quantity" type="Integer" array="False" size=""/>
+            <declare name="price" type="Real" array="False" size=""/>
+            <declare name="extendedPrice" type="Real" array="False" size=""/>
+            <declare name="totalExtended" type="Real" array="False" size=""/>
+            <assign variable="totalExtended" expression="0"/>
+            <output expression="&quot;Enter Quanttity&quot;" newline="True"/>
+            <input variable="quantity"/>
+            <while expression="quantity != 0">
+                <output expression="&quot;Enter price:&quot;" newline="True"/>
+                <input variable="price"/>
+                <assign variable="extendedPrice" expression="calcExtended(quantity, price)"/>
+                <output expression="quantity &amp; &quot; &quot; &amp; price &amp; &quot; &quot; &amp; extendedPrice" newline="True"/>
+                <assign variable="totalExtended" expression="totalExtended + extendedPrice"/>
+                <output expression="&quot;Enter quantity, or 0 to stop:&quot;" newline="True"/>
+                <input variable="quantity"/>
+            </while>
+            <output expression="&quot;Total extended price: $&quot; &amp; totalExtended" newline="True"/>
+        </body>
+    </function>
+    <function name="calcExtended" type="Real" variable="extendedPrice">
+        <parameters>
+            <parameter name="quantity" type="Integer" array="False"/>
+            <parameter name="price" type="Real" array="False"/>
+        </parameters>
+        <body>
+            <declare name="extendedPrice" type="Real" array="False" size=""/>
+            <assign variable="extendedPrice" expression="quantity * price"/>
+            <if expression="extendedPrice &gt; 10000">
+                <then>
+                    <assign variable="extendedPrice" expression="extendedPrice * 0.90"/>
+                </then>
+                <else/>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
